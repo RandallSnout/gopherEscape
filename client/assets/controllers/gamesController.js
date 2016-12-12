@@ -1,8 +1,20 @@
-app.controller('gamesController', ['$scope','userFactory', '$routeParams','$location', function($scope, userFactory, $routeParams, $location) {
+app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams','$location', function($scope, userFactory, $sce, $routeParams, $location) {
  	
- 	var world = [];
- 	var pacman = {};
 
+	var	level = [
+			[4,4,4,5,4,4,4],
+			[2,2,2,1,2,2,2],
+			[2,2,2,1,2,2,2],
+			[2,2,2,1,2,2,2],
+			[2,2,2,1,1,2,2],
+			[2,2,2,2,1,2,2],
+			[2,2,2,2,1,2,2],
+			[2,2,2,2,0,2,2]
+		];
+		
+	var	pacman = { x:4, y:7 };
+	var world = level;
+	var score = 0;
  	displayWorld = function(){
  		var output = '';
  		console.log('this is the board');
@@ -24,8 +36,10 @@ app.controller('gamesController', ['$scope','userFactory', '$routeParams','$loca
 			}
 			output += "\n</div>";
 		}
-		console.log(output);
-		// document.getElementById('world').innerHTML = output;
+		$scope.board = output;
+		$scope.showIt = function(){
+			return $sce.trustAsHtml($scope.board);
+		};
  	};
 
  	displayPacman = function(){
@@ -36,14 +50,14 @@ app.controller('gamesController', ['$scope','userFactory', '$routeParams','$loca
 
 	displayScore = function(){
 			console.log('this is the score');
-			document.getElementById('score').innerHTML = score;
+			$scope.score = score;
 	};
 
 	displayWorld();
 	displayPacman();
 	displayScore();
 
-	$scope.onkeydown = function(e){
+	onkeydown = function(e){
 		if(e.keyCode == 37 && world[pacman.y][pacman.x-1] !=2 && world[pacman.y][pacman.x-1] !=4){
 			pacman.x--;
 			document.getElementById("pacman").style.transform = "rotate(-90deg)";
@@ -82,22 +96,5 @@ app.controller('gamesController', ['$scope','userFactory', '$routeParams','$loca
 		console.log(e.keyCode);
 		displayPacman();
 	};
-
-	level1 = function(){
-		world = [
-			[4,4,4,5,4,4,4],
-			[2,2,2,1,2,2,2],
-			[2,2,2,1,2,2,2],
-			[2,2,2,1,2,2,2],
-			[2,2,2,1,1,2,2],
-			[2,2,2,2,1,2,2],
-			[2,2,2,2,1,2,2],
-			[2,2,2,2,0,2,2]
-		];
-		
-		pacman = { x:5, y:8 };
-	};
-
-	level1();
   
 }]);

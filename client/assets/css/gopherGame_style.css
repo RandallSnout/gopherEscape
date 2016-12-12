@@ -1,12 +1,11 @@
-#container{
+#gameContainer{
 	margin:0 auto;
-	width:940px;
+	width:280px;
 	border:3px solid white;
 	border-radius: 10px;
 	padding:10px;
 }
 .gameBoard {
-	width:920px;
 	position: relative;
 	margin:0 auto;
 }
@@ -19,30 +18,30 @@
 		display: inline-block;
 	}
 	div.brick{
-		background: url('./images/dirt.png');
+		background: url('../images/dirt.png');
 	}
 	div.coin{
-		background: url('./images/dirt.png');
+		background: url('../images/dirt.png');
 		background-position: center;
 		background-repeat: none;
 	}
 	div.cherry{
-		background: url('./images/dirt.png');
+		background: url('../images/dirt.png');
 		background-position: center;
 		background-repeat: none;
 	}
 	div.grass{
-		background: url('./images/grass.png');
+		background: url('../images/grass.png');
 		background-position: center;
 		background-repeat: none;
 	}
 	div.finish{
-		background: url('./images/hole.png');
+		background: url('../images/hole.png');
 		background-position: center;
 		background-repeat: none;
 	}
 	div#pacman{
-		background: url('./images/gopherP2.gif');
+		background: url('../images/gopherP2.gif');
 		background-position: center;
 		background-repeat: none;
 		width:40px;

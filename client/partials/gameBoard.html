@@ -12,21 +12,21 @@
 		<a class="buttonFail" ng-click="logOut()">Logout</a>
 	</div>
 </div>
-<div class="section">
+<div class="row">
 	<div class="gameBanner">
-		<div class="gary">
+		<!-- <div class="gary">
 			<img src="./assets/images/gary-gopher.png" alt="Gary the Gopher">
 		</div>
 		<div class="garyQuote">
-			<h3 class="black">Dig your way out and avoid any landmines.</h3>
-		</div>
-		<div id="score"></div>
+			<h4 class="black">Dig your way out and avoid any landmines.</h4>
+		</div> -->
+		<div id="score">{{score}}</div>
 	</div>
-	<div id="container">
+	<div id="gameContainer">
 		<div class="gameBoard">
-			<div id="world" >{{output}}</div>
-			<div id="pacman"></div>	
+			<div id="world" ng-bind-html="showIt()"></div>
+			<div id="pacman" ng-keypress="onkeydown()"></div>	
 		</div>
 	</div>
 </div>
-<script src=".././assets/js/gopher.js"></script>
+<!-- <script src=".././assets/js/gopher.js"></script> -->
