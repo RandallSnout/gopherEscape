@@ -1,0 +1,82 @@
+<div class="row">
+	<div class="two columns">
+		<img src="../assets/images/Mini_Logo.png" alt="Gopher Escape">
+	</div>
+	<div class="eight columns">
+		<ul class="nav">
+			<li><a class="buttonPlain" href="#/home" >Home</a></li>
+			<li><a class="buttonPlain" href="#/profile" >Profile</a></li>
+		</ul>
+	</div>
+	<div class="two columns">
+		<a class="buttonFail" ng-click="logOut()" >Logout</a>
+	</div>
+</div>
+<div class="row">
+	<div class="one-half column">
+		<h1>Profile</h1>
+		<h3>Name: <span ng-bind="user.name"></span></h3>
+		<h4>Email: <span ng-bind="user.email"></span></h4>
+		<h4>Total Points: <span ng-bind="user.points"></span></h4>
+		<h4>Current Level: <span ng-bind="user.level"></span></h4>
+		<h4>Gopher Name: <span ng-bind="user.gamer_name"></span></h4>
+		<h4>Gopher:</h4>
+		<div class="{{user.gopher}}Gopher gopherHolder"></div>
+	</div>
+	<div class="one-half column">
+		<h2>Update Profile:</h2>
+		<form ng-submit="updateUser(user._id, post)">
+			<div class="formGroup formBox">
+				<div class="formBefore"></div>
+				<label>Name:</label>
+				<input placeholder="{{user.name}}" ng-value="user.name" type="text" ng-model="post.name">
+				<div class="formAfter"></div>
+			</div>
+			<div class="formGroup formBox">
+				<div class="formBefore"></div>
+				<label>Email:</label>
+				<input placeholder="{{user.email}}" ng-value="user.email" type="email" ng-model="post.email">
+				<div class="formAfter"></div>
+			</div>
+			<div class="formGroup formBox">
+				<div class="formBefore"></div>
+				<label>Gopher Name:</label>
+				<input placeholder="{{user.gamer_name}}" value="{{user.gamer_name}}" type="text" ng-model="post.gamer_name">
+				<div class="formAfter"></div>
+			</div>
+			<div class="formGroup radioBox">
+				<div class="row">
+					<label>Gopher:</label>
+					<div class="two columns">
+						<input type="radio" value="brown" ng-model="post.gopher" name="gopher"><img src="../assets/images/brownGopher.png">
+					</div>
+					<div class="two columns">
+    					<input type="radio" value="green" ng-model="post.gopher" name="gopher"><img src="../assets/images/greenGopher.png">
+    				</div>
+					<div class="two columns">
+    					<input type="radio" value="blue" ng-model="post.gopher" name="gopher"><img src="../assets/images/blueGopher.png">
+    				</div>
+					<div class="two columns">
+    					<input type="radio" value="grey" ng-model="post.gopher" name="gopher"><img src="../assets/images/greyGopher.png">
+    				</div>
+					<div class="two columns">
+    					<input type="radio" value="orange" ng-model="post.gopher" name="gopher"><img src="../assets/images/orangeGopher.png">
+    				</div>
+					<div class="two columns">
+    					<input type="radio" value="pink" ng-model="post.gopher" name="gopher"><img src="../assets/images/pinkGopher.png">
+    				</div>
+					<div class="two columns">
+    					<input type="radio" value="purple" ng-model="post.gopher" name="gopher"><img src="../assets/images/purpleGopher.png">
+    				</div>
+					<div class="two columns">
+    					<input type="radio" value="red" ng-model="post.gopher" name="gopher"><img src="../assets/images/redGopher.png">
+    				</div>
+				</div>
+			</div>
+			<div class="buttonInput">
+				<input type="submit" value="Update">
+			</div>
+			<p class="red" ng-repeat="error in errors"><span ng-bind="error.message"></span></p>
+		</form>
+	</div>
+</div>

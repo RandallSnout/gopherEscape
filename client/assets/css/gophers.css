@@ -1,0 +1,34 @@
+.gopherHolder {
+	width:160px;
+	height:160px;
+	padding:5px;
+	border:2px solid white;
+	border-radius: 10px;
+}
+.Gopher {
+	background:url('../images/brownGopher.gif') center center no-repeat;
+}
+.brownGopher {
+	background:url('../images/brownGopher.gif') center center no-repeat;
+}
+.redGopher {
+	background:url('../images/redGopher.gif') center center no-repeat;
+}
+.greenGopher {
+	background:url('../images/greenGopher.gif') center center no-repeat;
+}
+.blueGopher {
+	background:url('../images/blueGopher.gif') center center no-repeat;
+}
+.greyGopher {
+	background:url('../images/greyGopher.gif') center center no-repeat;
+}
+.orangeGopher {
+	background:url('../images/orangeGopher.gif') center center no-repeat;
+}
+.pinkGopher {
+	background:url('../images/pinkGopher.gif') center center no-repeat;
+}
+.purpleGopher {
+	background:url('../images/purpleGopher.gif') center center no-repeat;
+}

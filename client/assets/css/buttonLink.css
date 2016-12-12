@@ -1,0 +1,328 @@
+
+/*-------------------------------- Blue Button ---------------------------------------*/
+.buttonPlain {
+	padding:10px 20px;
+	margin:10px 2%; 
+	display: inline-block;
+	vertical-align: top;
+	background:cornflowerblue;
+	position: relative;
+	color:white;
+	text-decoration: none;
+	transition: 500ms;
+}
+.buttonPlain:before {
+	content:'';
+	position: absolute;
+	width:100%;
+	height:6px;
+	top: 100%;
+	left:3px;
+	background:darkblue;
+	-ms-transform: skew(45deg,0deg); /* IE 9 */
+	-webkit-transform: skew(45deg,0deg); /* Safari */
+	transform: skew(45deg,0deg);
+	transition: 500ms;
+}
+.buttonPlain:after{
+	content:'';
+	-ms-transform: skew(0deg,45deg); /* IE 9 */
+	-webkit-transform: skew(0deg,45deg); /* Safari */
+	transform: skew(0deg,45deg);
+	vertical-align: top;
+	position:absolute;
+	width: 6px;
+	height: 100%;
+	left:100%;
+	top:3px;
+	background-color: blue;
+	transition: 500ms;
+}
+.buttonPlain:hover {
+	margin:8px 0px 0px 8px;
+	cursor: pointer;
+	position: relative;
+}
+.buttonPlain:hover::before {
+	width:100%;
+	height:8px;
+	top: 100%;
+	left:4px;
+	position:absolute;
+}
+.buttonPlain:hover::after {
+	width: 8px;
+	height: 100%;
+	left:100%;
+	top:4px;
+	position:absolute;
+}
+.buttonPlain:active {
+	margin-left:10px;
+	margin-top:14px;
+	cursor: pointer;
+	position: relative;
+}
+.buttonPlain:active::before {
+	height:0px;
+	width:99%;
+	top: 100%;
+	left:2px;
+}
+.buttonPlain:active::after {
+	width: 0px;
+	height: 99%;
+	left:100%;
+	top:0px;
+	-ms-transform: skew(0deg,25deg); /* IE 9 */
+	-webkit-transform: skew(0deg,25deg); /* Safari */
+	transform: skew(0deg,25deg);
+}
+
+/*-------------------------------- Green Button ---------------------------------------*/
+.buttonSuccess {
+	padding:10px 20px;
+	margin:10px 2%; 
+	display: inline-block;
+	vertical-align: top;
+	background:green;
+	position: relative;
+	color:white;
+	text-decoration: none;
+	transition: 300ms;
+}
+.buttonSuccess:before {
+	content:'';
+	position: absolute;
+	width:100%;
+	height:6px;
+	top: 100%;
+	left:3px;
+	background:darkgreen;
+	-ms-transform: skew(45deg,0deg); /* IE 9 */
+	-webkit-transform: skew(45deg,0deg); /* Safari */
+	transform: skew(45deg,0deg);
+	transition: 300ms;
+}
+.buttonSuccess:after{
+	content:'';
+	-ms-transform: skew(0deg,45deg); /* IE 9 */
+	-webkit-transform: skew(0deg,45deg); /* Safari */
+	transform: skew(0deg,45deg);
+	vertical-align: top;
+	position:absolute;
+	width: 6px;
+	height: 100%;
+	left:100%;
+	top:3px;
+	background-color: green;
+	transition: 300ms;
+}
+.buttonSuccess:hover {
+	margin:5px 10px 15px 6px;
+	cursor: pointer;
+	position: relative;
+}
+.buttonSuccess:hover::before {
+	width:100%;
+	height:10px;
+	top: 100%;
+	left:4px;
+	position:absolute;
+}
+.buttonSuccess:hover::after {
+	width: 10px;
+	height: 100%;
+	left:100%;
+	top:6px;
+	position:absolute;
+}
+.buttonSuccess:active {
+	margin-left:10px;
+	margin-top:14px;
+	cursor: pointer;
+	position: relative;
+}
+.buttonSuccess:active::before {
+	height:0px;
+	width:99%;
+	top: 100%;
+	left:2px;
+}
+.buttonSuccess:active::after {
+	width: 0px;
+	height: 99%;
+	left:100%;
+	top:0px;
+	-ms-transform: skew(0deg,25deg); /* IE 9 */
+	-webkit-transform: skew(0deg,25deg); /* Safari */
+	transform: skew(0deg,25deg);
+}
+
+/*-------------------------------- Red Button ---------------------------------------*/
+.buttonFail {
+	padding:10px 20px;
+	margin:10px 2%; 
+	display: inline-block;
+	vertical-align: top;
+	background:red;
+	position: relative;
+	color:white;
+	text-decoration: none;
+	transition: 300ms;
+}
+.buttonFail:before {
+	content:'';
+	position: absolute;
+	width:100%;
+	height:6px;
+	top: 100%;
+	left:3px;
+	background:darkred;
+	-ms-transform: skew(45deg,0deg); /* IE 9 */
+	-webkit-transform: skew(45deg,0deg); /* Safari */
+	transform: skew(45deg,0deg);
+	transition: 300ms;
+}
+.buttonFail:after{
+	content:'';
+	-ms-transform: skew(0deg,45deg); /* IE 9 */
+	-webkit-transform: skew(0deg,45deg); /* Safari */
+	transform: skew(0deg,45deg);
+	vertical-align: top;
+	position:absolute;
+	width: 6px;
+	height: 100%;
+	left:100%;
+	top:3px;
+	background-color: red;
+	transition: 300ms;
+}
+.buttonFail:hover {
+	margin:5px 10px 15px -2px;
+	cursor: pointer;
+	position: relative;
+}
+.buttonFail:hover::before {
+	width:100%;
+	height:10px;
+	top: 100%;
+	left:4px;
+	position:absolute;
+}
+.buttonFail:hover::after {
+	width: 10px;
+	height: 100%;
+	left:100%;
+	top:6px;
+	position:absolute;
+}
+.buttonFail:active {
+	margin-left:10px;
+	margin-top:14px;
+	cursor: pointer;
+	position: relative;
+}
+.buttonFail:active::before {
+	height:0px;
+	width:99%;
+	top: 100%;
+	left:2px;
+}
+.buttonFail:active::after {
+	width: 0px;
+	height: 99%;
+	left:100%;
+	top:0px;
+	-ms-transform: skew(0deg,25deg); /* IE 9 */
+	-webkit-transform: skew(0deg,25deg); /* Safari */
+	transform: skew(0deg,25deg);
+}
+
+/*---------------------------- Button Inpute ------------------------------------*/
+.buttonInput {
+	padding:10px 20px;
+	margin:10px 2%; 
+	display: inline-block;
+	vertical-align: top;
+	background:lightgreen;
+	position: relative;
+	color:white;
+	text-decoration: none;
+	transition: 600ms;
+}
+.buttonInput>input {
+	background:none;
+	border: none;
+	color:white;
+	font-size: 16px;
+}
+.buttonInput:before {
+	content:'';
+	position: absolute;
+	width:100%;
+	height:6px;
+	top: 100%;
+	left:3px;
+	background:darkgreen;
+	-ms-transform: skew(45deg,0deg); /* IE 9 */
+	-webkit-transform: skew(45deg,0deg); /* Safari */
+	transform: skew(45deg,0deg);
+	transition: 600ms;
+}
+.buttonInput:after{
+	content:'';
+	-ms-transform: skew(0deg,45deg); /* IE 9 */
+	-webkit-transform: skew(0deg,45deg); /* Safari */
+	transform: skew(0deg,45deg);
+	vertical-align: top;
+	position:absolute;
+	width: 6px;
+	height: 100%;
+	left:100%;
+	top:3px;
+	background-color: green;
+	transition: 600ms;
+}
+.buttonInput:hover {
+	margin-left:1px;
+	margin-top:3px;
+	margin-right:-1px;
+	cursor: pointer;
+	position: relative;
+}
+.buttonInput:hover::before {
+	width:100%;
+	height:10px;
+	top: 100%;
+	left:4px;
+	position:absolute;
+}
+.buttonInput:hover::after {
+	width: 10px;
+	height: 100%;
+	left:100%;
+	top:6px;
+	position:absolute;
+}
+.buttonInput:active {
+	margin-left:10px;
+	margin-top:14px;
+	cursor: pointer;
+	position: relative;
+}
+.buttonInput:active::before {
+	height:0px;
+	width:99%;
+	top: 100%;
+	left:2px;
+}
+.buttonInput:active::after {
+	width: 0px;
+	height: 99%;
+	left:100%;
+	top:0px;
+	-ms-transform: skew(0deg,25deg); /* IE 9 */
+	-webkit-transform: skew(0deg,25deg); /* Safari */
+	transform: skew(0deg,25deg);
+}

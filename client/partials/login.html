@@ -1,0 +1,63 @@
+<div class="section">
+	<div class="four columns">
+		<img class="logo" src="./assets/images/Gopher_Logo.png" alt="Gopher Escape Logo">
+	</div>
+	<div class="four columns">
+		<div class="section">
+			<h2>Start Digging!</h2>
+			<form ng-submit="register(post)">
+				<div class="formGroup formBox">
+					<div class="formBefore"></div>
+					<label>Name</label>
+					<input type="text" ng-model="post.name">
+					<div class="formAfter"></div>
+				</div>
+				<div class="formGroup formBox">
+					<div class="formBefore"></div>
+					<label>Email</label>
+					<input type="email" ng-model="post.email">
+					<div class="formAfter"></div>
+				</div>
+				<div class="formGroup formBox">
+					<div class="formBefore"></div>
+					<label>Password</label>
+					<input type="password" ng-model="post.password">
+					<div class="formAfter"></div>
+				</div>
+				<div class="formGroup formBox">
+					<div class="formBefore"></div>
+					<label>Verify Password</label>
+					<input type="password" ng-model="post.password_check">
+					<div class="formAfter"></div>
+				</div>
+				<div class="buttonInput">
+					<input type="submit" value="Sign Up">
+				</div>
+			</form>
+			<p class="red" ng-repeat="error in regErrors"><span ng-bind="error.message"></span></p>
+		</div>
+	</div>
+	<div class="four columns">
+		<div class="section">
+			<h2>Dig On!</h2>
+			<form ng-submit="login(log)">
+				<div class="formGroup formBox">
+					<div class="formBefore"></div>
+					<label>Email</label>
+					<input type="email" ng-model="log.email">
+					<div class="formAfter"></div>
+				</div>
+				<div class="formGroup formBox">
+					<div class="formBefore"></div>
+					<label>Password</label>
+					<input type="password" ng-model="log.password">
+					<div class="formAfter"></div>
+				</div>
+				<div class="buttonInput">
+					<input type="submit" value="Sign In">
+				</div>
+			</form>
+			<p class="red" ng-repeat="error in logErrors"><span ng-bind="error.message"></span></p>
+		</div>
+	</div>
+</div>

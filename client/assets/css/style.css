@@ -1,0 +1,232 @@
+body{
+    background: black;
+}
+h1, h2 {
+    color:white;
+    font-family: sans-serif;
+}
+img {
+    width:100%;
+}
+input:focus {
+    outline:0;
+}
+a {
+    text-decoration:none; 
+}
+.bcWhite {
+    background:white;
+}
+.bcBrown {
+    background: tan;
+}
+.bcBlack {
+    background: black;
+}
+.black{
+    color:black;
+}
+table {
+    border:1px solid silver;
+    border-collapse: collapse;
+    width:100%;
+}
+thead {
+    border-bottom: 1px solid #d0d0d0;
+    text-align: left;
+}
+td {
+    height:50px;
+    padding-left: 10px;
+}
+.td_name {
+    width:125px;
+}
+.green {
+    color:red;
+}
+.red {
+    color:red;
+}
+.formGroup{
+    clear: both;
+    margin:5px 0px;
+}
+.formGroup>input{
+    border:1px solid silver;
+    float:right;
+    width:50%;
+}
+.right{
+    float:right;
+}
+.left{
+    float:left;
+}
+.underBorder {
+    border-bottom:1px solid white;
+}
+textarea {
+    width:99%;
+    border:1px solid silver;
+}
+.logo {
+    margin-top:10px;
+}
+
+.nav li {
+    display:inline;
+    list-style: none;
+}
+/*--------- Form --------------*/
+
+.formBox {
+    background:cornflowerblue;
+    padding:6px 8px;
+    width:250px;
+    height:70px;
+    position: relative;
+    margin-bottom:15px;
+}
+.formBefore {
+    width:8px;
+    height:82px;
+    margin-left:258px;
+    margin-right: 70px;
+    margin-top:-2px;
+    -ms-transform: skew(0deg,45deg); /* IE 9 */
+    -webkit-transform: skew(0deg,45deg); /* Safari */
+    transform: skew(0deg,45deg);
+    position: absolute;
+    background: blue;
+}
+.formAfter{
+    -ms-transform: skew(45deg,0deg); /* IE 9 */
+    -webkit-transform: skew(45deg,0deg); /* Safari */
+    transform: skew(45deg,0deg);
+    vertical-align: top;
+    position:absolute;
+    width: 267px;
+    height: 8px;
+    left: 3px;
+    top: 100%;
+    background-color: darkblue;
+    border-right:3px solid white inset;
+}
+.formBox:before {
+    width:8px;
+    height:inherit;
+    margin-left:50px;
+    margin-right: 70px;
+    -ms-transform: skew(0deg,45deg); /* IE 9 */
+    -webkit-transform: skew(0deg,45deg); /* Safari */
+    transform: skew(0deg,45deg);
+    position: absolute;
+    background: darkblue;
+}
+.formBox:after {
+    width:200px;
+    height:8px;
+    -ms-transform: skew(0deg,45deg); /* IE 9 */
+    -webkit-transform: skew(0deg,45deg); /* Safari */
+    transform: skew(0deg,45deg);
+    position: absolute;
+    background: darkblue;
+}
+.formBox>label {
+    color:white;
+    font-weight: bolder;
+    font-size: 20px;
+}
+.formBox>input{
+    border-left:5px solid darkblue;
+    border-top:5px solid blue;
+    padding:6px 0px;
+    text-shadow: 6px 1px 3px darkblue;
+    background: #287df2;
+    font-size: 18px;
+    color:white;
+    width: inherit;
+    border-right:none;
+    border-bottom:none;
+}
+/*-------------------------------------- Home Screen Style -------------------------*/
+
+.friendsList {
+    border:2px solid white;
+    border-radius:10px;
+    height:100px;
+}
+
+/*-------------------------------------- Home Screen Style -------------------------*/
+
+.usersList {
+    border:2px white solid;
+    border-radius:10px;
+    padding:8px;
+}
+
+/*-------------------------------------- Game Board Style --------------------------*/
+
+.gameBanner {
+    width:940px;
+    margin:0 auto;
+}
+.gary {
+    margin-left: 1%;
+    display: inline-block;
+    vertical-align: top;
+}
+.garyQuote{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width:40%;
+    height:70px;
+    padding: 5px 15px;
+    margin: 1em 0 3em;
+    border: 10px solid #5a8f00;
+    text-align: center;
+    color: #333;
+    background: #fff;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+.garyQuote h2 {
+    margin-top: 5px;
+}
+.garyQuote:before {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    bottom: -40px;
+    left: 50px;
+    width: 50px;
+    height: 30px;
+    border-style: solid;
+    border-width: 0 10px 10px 0;
+    border-color: #5a8f00;
+    background: transparent;
+    -webkit-border-bottom-right-radius: 80px 50px;
+    -moz-border-radius-bottomright: 80px 50px;
+    border-bottom-right-radius: 80px 50px;
+    display: block;
+}
+.garyQuote:after {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    bottom: -40px;
+    left: 50px;
+    width: 20px;
+    height: 30px;
+    border-style: solid;
+    border-width: 0 10px 10px 0;
+    border-color: #5a8f00;
+    background: transparent;
+    -webkit-border-bottom-right-radius: 40px 50px;
+    -moz-border-radius-bottomright: 40px 50px;
+    border-bottom-right-radius: 40px 50px;
+    display: block;
+}
