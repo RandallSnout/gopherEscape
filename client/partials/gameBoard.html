@@ -13,20 +13,20 @@
 	</div>
 </div>
 <div class="row">
+
 	<div class="gameBanner">
-		<!-- <div class="gary">
-			<img src="./assets/images/gary-gopher.png" alt="Gary the Gopher">
-		</div>
-		<div class="garyQuote">
-			<h4 class="black">Dig your way out and avoid any landmines.</h4>
-		</div> -->
 		<div id="score" ng-bind="score"></div>
 	</div>
+
+</div>
+<div class="row">
+
 	<div id="gameContainer">
-		<div class="gameBoard">
+		<div class="gameBoard {{animate}}">
 			<div id="world" ng-bind-html="showIt()"></div>
 			<div id="pacman" ng-keypress="onkeydown()"></div>	
 		</div>
 	</div>
+
 </div>
 <!-- <script src=".././assets/js/gopher.js"></script> -->
