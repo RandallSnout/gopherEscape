@@ -48,6 +48,9 @@ td {
 .red {
     color:red;
 }
+.blackText {
+    color:black;
+}
 .formGroup{
     clear: both;
     margin:5px 0px;
@@ -156,6 +159,7 @@ textarea {
     border:2px solid white;
     border-radius:10px;
     height:100px;
+    margin:10px 0px;
 }
 
 /*-------------------------------------- Home Screen Style -------------------------*/

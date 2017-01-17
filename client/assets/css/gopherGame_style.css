@@ -1,9 +1,13 @@
+.centerBoard{
+	align-content: center;
+	text-align: center;
+}
 #gameContainer{
 	margin:0 auto;
-	width:280px;
 	border:3px solid white;
 	border-radius: 10px;
 	padding:10px;
+	display: inline-block;
 }
 .gameBoard {
 	position: relative;
@@ -21,6 +25,11 @@
 		background: url('../images/dirt.png');
 	}
 	div.coin{
+		background: url('../images/dirt.png');
+		background-position: center;
+		background-repeat: none;
+	}
+	div.animateBrick{
 		background: url('../images/dirt.png');
 		background-position: center;
 		background-repeat: none;
@@ -89,3 +98,4 @@
   -webkit-animation: shake 600ms ease-in-out;
   animation: shake 600ms ease-in-out;
 }
+/*----------------------------- Modal Style --------------------*/

@@ -32,7 +32,7 @@ app.config(function ($routeProvider, $httpProvider) {
             templateUrl: 'partials/findFriends.html',
             controller:'usersController'
         })
-        .when('/game', {
+        .when('/game/:id', {
             templateUrl: 'partials/gameBoard.html',
             controller:'gamesController'
         })

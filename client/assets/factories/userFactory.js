@@ -81,6 +81,12 @@ app.factory('userFactory', ['$http', function($http) {
                 callback(requests);
             });
         };
+        this.getLevel = function(lvlID, callback){
+            $http.get('/usersLevel/'+lvlID).then(function(returned_data){
+                console.log('Factory Level '+returned_data.data);
+                callback(returned_data.data);
+            });
+        };
 
     }
     console.log(new UserFactory());

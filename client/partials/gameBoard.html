@@ -12,6 +12,8 @@
 		<a class="buttonFail" ng-click="logOut()">Logout</a>
 	</div>
 </div>
+ <p style="color:white">{{level}}</p>
+  <p style="color:white">{{user.name}}</p>
 <div class="row">
 
 	<div class="gameBanner">
@@ -19,14 +21,21 @@
 	</div>
 
 </div>
-<div class="row">
+<div class="row centerBoard">
 
-	<div id="gameContainer">
-		<div class="gameBoard {{animate}}">
+	<div id="gameContainer" class="{{animate}}">
+		<div class="gameBoard">
 			<div id="world" ng-bind-html="showIt()"></div>
 			<div id="pacman" ng-keypress="onkeydown()"></div>	
 		</div>
 	</div>
 
 </div>
-<!-- <script src=".././assets/js/gopher.js"></script> -->
+
+  <div id="content">
+    <h1 class="blackText">Look at me!</h1>
+    <p class="blackText">I'm a modal window.</p>
+    <a class="buttonPlain" ng-click="replay()">Replay</a>
+    <a class="buttonFail" ng-click="exit()">Exit</a>
+    <a class="buttonSuccess" ng-click="next()">Next</a>
+  </div>
