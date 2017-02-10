@@ -60,6 +60,15 @@ module.exports = {
         console.log(level[req.params.id-1]);
         res.json(level[req.params.id-1]);
 
+    },
+
+    levelAmount: function(req, res){
+        var levelInfo = {
+            'max': 5,
+            'updated':'1-22-2017'
+        };
+        res.json(levelInfo);
     }
+
 
 }

@@ -54,6 +54,13 @@ app.controller('usersController', ['$scope','userFactory', '$routeParams','$loca
         });
     };
 
+    var levels = function(){
+        userFactory.lvlLength(function(returnedData){
+            $scope.length = returnedData.data;
+        });
+    }
+    levels();
+
     $scope.logOut = function(){
         userFactory.logout();
         $location.url('/');

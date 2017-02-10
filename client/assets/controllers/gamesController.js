@@ -1,17 +1,8 @@
 app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams','$location', '$timeout','$animate', function($scope, userFactory, $sce, $routeParams, $location, $timeout, $animate) {
  	
+	var world;
+	var gopher = 'brown';
 
-	var	level = [
-			[4,5,4,4],
-			[2,1,2,2],
-			[2,1,2,2],
-			[2,1,2,2],
-			[2,1,1,2],
-			[2,2,1,2],
-			[2,2,1,2],
-			[2,2,0,2]
-		];
-	
 	var getUser = function(){
         userFactory.show(function(returnedData){
             $scope.user = returnedData.data;
@@ -20,21 +11,22 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 
     getUser();
 
-	thisLevel = function(level){
-		userFactory.getLevel(level, function(returnedData){
-			// var currentLevel = 'level'+$scope.user.level;
-            $scope.level = returnedData;
-            console.log($scope.level+' controller level 1');
-            return $scope.level;
-        });
-        console.log($scope.level+' controller level 2');
-	};
-	console.log($scope.level+' controller level 3');
+    $scope.logOut = function(){
+        userFactory.logout();
+        $location.url('/');
+    }
 
-	thisLevel($routeParams.id);
+	var thisLevel = function(levelId, callback){
+		userFactory.getLevel(levelId, function(returnedData){
+            $scope.level = returnedData;
+            console.log($scope.level+' controller level');
+            callback();
+        });
+	};
+
 
 	var points = 0;
-	var world = level
+
 
 	var locatePacman = function(){
 		for(var p=0; p<world.length; p++){ 
@@ -46,10 +38,13 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 			}
 		}
 	};
-	locatePacman();
-	var	pacman = {x:$scope.x, y:$scope.y};
+
+	
 	$scope.showPath = true;
 	$scope.shakeBoard = true;
+
+	// trying something new...
+	var pacman;
 
  	var displayWorld = function(){
  		var output = '';
@@ -62,12 +57,12 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 					if ($scope.showPath == true) {
 						output+="<div class='empty'></div>";
 						$timeout(function() {
-							output+="<div class='animateBrick'></div>"; 
+							output+="<div class='brick'></div>"; 
 							$scope.showPath = false; 
 							displayWorld();
 						}, 300);
 					} else {
-						output+="<div class='animateBrick'></div>";
+						output+="<div class='brick'></div>";
 					};
 				}
 				else if(world[i][j] == 3)
@@ -94,37 +89,52 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 		$scope.showIt = function(){
 			return $sce.trustAsHtml($scope.board);
 		};
-		// $scope.$apply();
- 	};
 
+ 	};
  	 var displayPacman = function(){
-			document.getElementById('pacman').style.top = pacman.y*40+"px";
-			document.getElementById('pacman').style.left = pacman.x*40+"px";
+			document.getElementById(gopher+'Gopher').style.top = pacman.y*40+"px";
+			document.getElementById(gopher+'Gopher').style.left = pacman.x*40+"px";
 	};
 
+ 	var assign = function(){
+		world = $scope.level;
+		gopher = $scope.user.gopher;
+		console.log('Gopher');
+		console.log(gopher+"Gopher");
+		displayWorld();
+		locatePacman();
+		pacman = {x:$scope.x, y:$scope.y};
+		displayPacman();
+		// console.log('This is the world variable:')
+		// console.log(world);
+		// console.log('This is the pacman variable:')
+		// console.log(pacman);
+		movePoints();
+	};
 
-	displayWorld();
-	displayPacman();
+	thisLevel($routeParams.id, assign);
+
 
 	document.onkeydown = function(e){
+		// e.preventDefault();
 		if(e.keyCode == 37 && world[pacman.y][pacman.x-1] !=2 && world[pacman.y][pacman.x-1] !=4){
 			pacman.x--;
-			document.getElementById("pacman").style.background = "url('assets/images/left.gif')";
+			document.getElementById(gopher+'Gopher').style.background = "url('assets/images/"+gopher+"Left.gif')";
 			movePoints();
 		}
 		else if (e.keyCode==39 && world[pacman.y][pacman.x+1] !=2 && world[pacman.y][pacman.x-1] !=4) {
 			pacman.x++;
-			document.getElementById("pacman").style.background = "url('assets/images/right.gif')";
+			document.getElementById(gopher+'Gopher').style.background = "url('assets/images/"+gopher+"Right.gif')";
 			movePoints();
 		}
 		else if (e.keyCode==38 && world[pacman.y-1][pacman.x] !=2) {
 			pacman.y--;
-			document.getElementById("pacman").style.background = "url('assets/images/backward.gif')";
+			document.getElementById(gopher+'Gopher').style.background = "url('assets/images/"+gopher+"Backward.gif')";
 			movePoints();
 		}
 		else if (e.keyCode==40 && world[pacman.y+1][pacman.x] !=2) {
 			pacman.y++;
-			document.getElementById("pacman").style.background = "url('assets/images/forward.gif')";
+			document.getElementById(gopher+'Gopher').style.background = "url('assets/images/"+gopher+"Forward.gif')";
 			movePoints();
 		}
 		displayPacman();
@@ -142,165 +152,70 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 		if(world[pacman.y][pacman.x]==5){
 			world[pacman.y][pacman.x]=0;
 			points+=300;
-			gameEnd();
+			modalWin();
 		}
 		$scope.score = points;
 		displayWorld();
-		// $scope.$apply();
+		$scope.$apply();
 	};
-	movePoints();
+
+	var levels = function(){
+        userFactory.lvlLength(function(returnedData){
+            $scope.length = returnedData.data;
+        });
+    };
+    
+    levels();
+
+	$scope.replay = function(){
+		window.location.reload();
+		
+	};
+	$scope.exit = function(score){
+		userFactory.addPoints(score, function(returnData){
+			$location.url('/home');
+		})
+		
+	};
+	$scope.next = function(score){
+		console.log('score: '+score);
+		userFactory.addPoints(score, function(returnData){
+			console.log('users level is:');
+			console.log(returnData);
+			var newLevel = returnData;
+			$location.url('/game/'+newLevel);
+		})
+		// window.location.reload();
+	};
 
 	//--------------------------------------- Modal Function -------------------------//
 
-	var gameEnd = function() {
+		// Get the modal
+	var modal = document.getElementById('myModal');
 
-		  // Define our constructor 
-		  this.Modal = function() {
+	// Get the button that opens the modal
+	var btn = document.getElementById("myBtn");
 
-		    // Create global element references
-		    this.closeButton = null;
-		    this.modal = null;
-		    this.overlay = null;
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
 
-		    // Determine proper prefix
-		    this.transitionEnd = transitionSelect();
+	// When the user clicks on the button, open the modal 
+	function modalWin() {
+	    modal.style.display = "block";
+	}
 
-		    // Define option defaults 
-		    var defaults = {
-		      autoOpen: false,
-		      className: 'fade-and-drop',
-		      closeButton: true,
-		      content: "",
-		      maxWidth: 350,
-		      minWidth: 280,
-		      overlay: true
-		    }
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	    modal.style.display = "none";
+	    window.location.reload();
+	}
 
-		    // Create options by extending defaults with the passed in arugments
-		    if (arguments[0] && typeof arguments[0] === "object") {
-		      this.options = extendDefaults(defaults, arguments[0]);
-		    }
-
-		    if(this.options.autoOpen === true) this.open();
-
-		  }
-
-		  // Public Methods
-
-		  Modal.prototype.close = function() {
-		    var _ = this;
-		    this.modal.className = this.modal.className.replace(" scotch-open", "");
-		    this.overlay.className = this.overlay.className.replace(" scotch-open",
-		      "");
-		    this.modal.addEventListener(this.transitionEnd, function() {
-		      _.modal.parentNode.removeChild(_.modal);
-		    });
-		    this.overlay.addEventListener(this.transitionEnd, function() {
-		      if(_.overlay.parentNode) _.overlay.parentNode.removeChild(_.overlay);
-		    });
-		  }
-
-		  Modal.prototype.open = function() {
-		    buildOut.call(this);
-		    initializeEvents.call(this);
-		    window.getComputedStyle(this.modal).height;
-		    this.modal.className = this.modal.className +
-		      (this.modal.offsetHeight > window.innerHeight ?
-		        " scotch-open scotch-anchored" : " scotch-open");
-		    this.overlay.className = this.overlay.className + " scotch-open";
-		  }
-
-		  // Private Methods
-
-		  function buildOut() {
-
-		    var content, contentHolder, docFrag;
-
-		    /*
-		     * If content is an HTML string, append the HTML string.
-		     * If content is a domNode, append its content.
-		     */
-
-		    if (typeof this.options.content === "string") {
-		      content = this.options.content;
-		    } else {
-		      content = this.options.content.innerHTML;
-		    }
-
-		    // Create a DocumentFragment to build with
-		    docFrag = document.createDocumentFragment();
-
-		    // Create modal element
-		    this.modal = document.createElement("div");
-		    this.modal.className = "scotch-modal " + this.options.className;
-		    this.modal.style.minWidth = this.options.minWidth + "px";
-		    this.modal.style.maxWidth = this.options.maxWidth + "px";
-
-		    // If closeButton option is true, add a close button
-		    if (this.options.closeButton === true) {
-		      this.closeButton = document.createElement("button");
-		      this.closeButton.className = "scotch-close close-button";
-		      this.closeButton.innerHTML = "&times;";
-		      this.modal.appendChild(this.closeButton);
-		    }
-
-		    // If overlay is true, add one
-		    if (this.options.overlay === true) {
-		      this.overlay = document.createElement("div");
-		      this.overlay.className = "scotch-overlay " + this.options.className;
-		      docFrag.appendChild(this.overlay);
-		    }
-
-		    // Create content area and append to modal
-		    contentHolder = document.createElement("div");
-		    contentHolder.className = "scotch-content";
-		    contentHolder.innerHTML = content;
-		    this.modal.appendChild(contentHolder);
-
-		    // Append modal to DocumentFragment
-		    docFrag.appendChild(this.modal);
-
-		    // Append DocumentFragment to body
-		    document.body.appendChild(docFrag);
-
-		  }
-
-		  function extendDefaults(source, properties) {
-		    var property;
-		    for (property in properties) {
-		      if (properties.hasOwnProperty(property)) {
-		        source[property] = properties[property];
-		      }
-		    }
-		    return source;
-		  }
-
-		  function initializeEvents() {
-
-		    if (this.closeButton) {
-		      this.closeButton.addEventListener('click', this.close.bind(this));
-		    }
-
-		    if (this.overlay) {
-		      this.overlay.addEventListener('click', this.close.bind(this));
-		    }
-
-		  }
-
-		  function transitionSelect() {
-		    var el = document.createElement("div");
-		    if (el.style.WebkitTransition) return "webkitTransitionEnd";
-		    if (el.style.OTransition) return "oTransitionEnd";
-		    return 'transitionend';
-		  }
-
-		  var myContent = document.getElementById('content');
-
-		  var myModal = new Modal({
-		    content: myContent
-		  });
-
-		  myModal.open();
-		};
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	    if (event.target == modal) {
+	        modal.style.display = "none";
+	        window.location.reload();
+	    }
+	}
   
 }]);

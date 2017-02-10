@@ -4,6 +4,7 @@ console.log('sessions controller');
 // Build out the methods in the friendsControllers below
 var mongoose = require('mongoose')
 var User = mongoose.model('User');
+var bcrypt = require('bcrypt');
 module.exports = {
 
     register: function(req,res){
@@ -12,11 +13,13 @@ module.exports = {
             var noMatch = {errors: {password: {message:"Passwords did not match, Please try again."}}};
             res.json(noMatch);
         } else {
+            var password = req.body.password;
             var user = new User(req.body);
             user.points = 0;
             user.level = 1;
             user.gopher = 'brownGopher';
             user.status = 'online';
+            user.password = bcrypt.hashSync(password, bcrypt.genSaltSync(8));
             user.save(function(err,user){
                 if (err){
                     res.json(err);
@@ -27,7 +30,7 @@ module.exports = {
                         _id: user._id
                     };
                     req.session.userId = user._id;
-                    res.sendStatus(200);
+                    res.sendStatus(201);
                 }
             });
         }
@@ -38,9 +41,10 @@ module.exports = {
         console.log(req.body);
             User.findOne({email: req.body.email}).exec(function (err, user) {
                 if(user) {
-                    if (req.body.password == user.password) {
+                    if (bcrypt.compareSync(req.body.password, user.password)) {
                         console.log('User password matches');
                         req.session.userId = user._id;
+                        // res.sendStatus(201);
                         res.json(user)
                     } else {
                         var wrongUser = {errors: {password: {message:"Password does not match, Please try again."}}};

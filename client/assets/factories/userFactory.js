@@ -83,12 +83,23 @@ app.factory('userFactory', ['$http', function($http) {
         };
         this.getLevel = function(lvlID, callback){
             $http.get('/usersLevel/'+lvlID).then(function(returned_data){
-                console.log('Factory Level '+returned_data.data);
+                console.log('Factory Level ')
+                console.log(returned_data.data);
                 callback(returned_data.data);
             });
         };
+        this.addPoints = function(score, callback){
+            $http.put('/usersScore/'+score).then(function(returned_data){
+                callback(returned_data.data);
+            });
+        };
+        this.lvlLength = function(callback){
+            $http.get('/levelLength').then(function(returned_data){
+                callback(returned_data);
+            });
+        }
 
     }
-    console.log(new UserFactory());
+    // console.log(new UserFactory());
     return new UserFactory();
 }]);

@@ -4,8 +4,8 @@
 	</div>
 	<div class="eight columns">
 		<ul class="nav">
-			<li><a class="buttonPlain" href="#/home" >Home</a></li>
-			<li><a class="buttonPlain" href="#/profile" >Profile</a></li>
+			<li><a class="buttonPlain" href="#home" >Home</a></li>
+			<li><a class="buttonPlain" href="#profile" >Profile</a></li>
 		</ul>
 	</div>
 	<div class="two columns">
@@ -16,7 +16,12 @@
 	<div class="seven columns">
 		<h1>Hello {{user.name}}</h1>
 		<h4>Overall Score:{{user.points}}</h4>
-		<a class="buttonSuccess" href="#/game/{{user.level}}">Lets Play</a>
+		<div ng-if="length.max > user.level">
+			<a class="buttonSuccess" href="#/game/{{user.level}}">Lets Play</a>
+		</div>
+		<div ng-hide="length.max > user.level">
+			<h3>More Levels Coming Soon!</h3>
+		</div>
 	</div>
 	<div class="five columns">
 		<a class="buttonSuccess" href="#/find">Find Friends</a>

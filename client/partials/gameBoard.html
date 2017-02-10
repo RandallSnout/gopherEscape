@@ -12,8 +12,7 @@
 		<a class="buttonFail" ng-click="logOut()">Logout</a>
 	</div>
 </div>
- <p style="color:white">{{level}}</p>
-  <p style="color:white">{{user.name}}</p>
+
 <div class="row">
 
 	<div class="gameBanner">
@@ -26,16 +25,22 @@
 	<div id="gameContainer" class="{{animate}}">
 		<div class="gameBoard">
 			<div id="world" ng-bind-html="showIt()"></div>
-			<div id="pacman" ng-keypress="onkeydown()"></div>	
+			<div id="{{user.gopher}}Gopher" ng-keypress="onkeydown()"></div>	
 		</div>
 	</div>
 
 </div>
 
-  <div id="content">
-    <h1 class="blackText">Look at me!</h1>
-    <p class="blackText">I'm a modal window.</p>
-    <a class="buttonPlain" ng-click="replay()">Replay</a>
-    <a class="buttonFail" ng-click="exit()">Exit</a>
-    <a class="buttonSuccess" ng-click="next()">Next</a>
-  </div>
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+	<div class="modal-content">
+    	<span class="close">&times;</span>
+    	<h1>Congrats {{user.gamer_name}} you Earned {{score}}!!</h1>
+    	<a class="buttonPlain" ng-click="replay()">Replay</a>
+    	<a class="buttonFail" ng-click="exit(score)">Exit</a>
+    	<div ng-if="length.max > user.level">
+    		<a class="buttonSuccess" ng-click="next(score)">Next</a>
+    	</div>
+	</div>
+</div>

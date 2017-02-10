@@ -5,32 +5,68 @@
 	border:2px solid white;
 	border-radius: 10px;
 }
-.Gopher {
+#Gopher {
 	background:url('../images/brownGopher.gif') center center no-repeat;
+    background-size: contain;
+    width:40px;
+    height:40px;
+    position: absolute;
 }
-.brownGopher {
+#brownGopher {
 	background:url('../images/brownGopher.gif') center center no-repeat;
+    background-size: contain;
+    width:40px;
+    height:40px;
+    position: absolute;
 }
-.redGopher {
+#redGopher {
 	background:url('../images/redGopher.gif') center center no-repeat;
+    background-size: contain;
+    width:40px;
+    height:40px;
+    position: absolute;
 }
-.greenGopher {
+#greenGopher {
 	background:url('../images/greenGopher.gif') center center no-repeat;
+    background-size: contain;
+    width:40px;
+    height:40px;
+    position: absolute;
 }
-.blueGopher {
+#blueGopher {
 	background:url('../images/blueGopher.gif') center center no-repeat;
+    background-size: contain;
+    width:40px;
+    height:40px;
+    position: absolute;
 }
-.greyGopher {
+#greyGopher {
 	background:url('../images/greyGopher.gif') center center no-repeat;
+    background-size: contain;
+    width:40px;
+    height:40px;
+    position: absolute;
 }
-.orangeGopher {
+#orangeGopher {
 	background:url('../images/orangeGopher.gif') center center no-repeat;
+    background-size: contain;
+    width:40px;
+    height:40px;
+    position: absolute;
 }
-.pinkGopher {
+#pinkGopher {
 	background:url('../images/pinkGopher.gif') center center no-repeat;
+    background-size: contain;
+    width:40px;
+    height:40px;
+    position: absolute;
 }
-.purpleGopher {
+#purpleGopher {
 	background:url('../images/purpleGopher.gif') center center no-repeat;
+    background-size: contain;
+    width:40px;
+    height:40px;
+    position: absolute;
 }
 
 /* Modal Base CSS */

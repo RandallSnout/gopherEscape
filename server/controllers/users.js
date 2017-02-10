@@ -84,6 +84,31 @@ module.exports = {
                 })
             }
         })
+    },
+
+    addScore: function(req, res){
+        User.findOne({_id: req.session.userId}, function(err, user){
+            if(err){
+                console.log(err);
+            }else{
+                var user;
+                pointTotal = user.points + parseInt(req.params.id); 
+                user.points = pointTotal;
+                console.log('total points is:'+pointTotal);
+                user.level++;
+                console.log('user object add score.');
+                console.log(user);
+                user.save(function(err, user){
+                    if (err){
+                        console.log(err);
+                    } else {
+                        console.log('users level:');
+                        console.log(user.level)
+                        res.json(user.level);
+                    }
+                })
+            }
+        })
     }
 
 }

@@ -1,6 +1,6 @@
 console.log('User model');
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 // build your friend schema and add it to the mongoose.models
 var UserSchema = new mongoose.Schema({
     //Table Items Here
