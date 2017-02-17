@@ -44,8 +44,8 @@ module.exports = {
                     if (bcrypt.compareSync(req.body.password, user.password)) {
                         console.log('User password matches');
                         req.session.userId = user._id;
-                        // res.sendStatus(201);
-                        res.json(user)
+                        res.status(201).json(user);
+                        // res.json(user)
                     } else {
                         var wrongUser = {errors: {password: {message:"Password does not match, Please try again."}}};
                         res.json(wrongUser);
@@ -61,7 +61,7 @@ module.exports = {
         req.session.userId = null;
         console.log('logged out');
         console.log(req.session.userId);
-        res.sendStatus(401);
+        res.status(401);
     }
 
 }
