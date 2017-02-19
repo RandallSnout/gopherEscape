@@ -4,6 +4,7 @@ console.log('users controller');
 // Build out the methods in the friendsControllers below
 var mongoose = require('mongoose')
 var User = mongoose.model('User');
+var friends = require("mongoose-friends")
 module.exports = {
 
     show: function(req,res){
@@ -23,14 +24,16 @@ module.exports = {
 
     showFriends: function(req,res){
         //your code here
-        User.find({_id: req.session.userId }).populate('friends').exec(function(err, result){
+        User.find({_id: req.session.userId }, {friends:1}).populate('friends').exec(function(err, result){
+            
             res.json(result);
         })
     },
 
     showRequests: function(req,res){
         //your code here
-        User.find({_id: req.session.userId }).populate('requests').exec(function(err, result){
+        User.find({_id: req.session.userId }, {requests:1}).populate('requests').exec(function(err, result){
+            
             res.json(result);
         })
     },
@@ -70,7 +73,7 @@ module.exports = {
             if(err){
                 res.json(err)
             }else {
-                user.request.push(req.session.userId);
+                user.requests.push(req.session.userId);
                 console.log('Friend pushed');
                 user.save(function(err, results){
                     if(err){
@@ -80,6 +83,73 @@ module.exports = {
                         console.log('Friend Requested');
                         res.sendStatus(200);
                         console.log(results);
+                    }
+                })
+            }
+        })
+    },
+
+    confirmFriend: function(req, res){
+        User.findOne({_id: req.session.userId}, function(err, user){
+            if(err){
+                res.json(err)
+            }else {
+                user.friends.push(req.params.id);
+                user.requests.remove(req.params.id);
+                user.save(function(err, results){
+                    if(err){
+                        res.json(err)
+                    } else {
+                        console.log('friend logged in current user')
+                        // res.sendStatus(200);
+                    }
+                })
+            }
+        });
+        User.findOne({_id: req.params.id}, function(err, user){
+            if(err){
+                res.json(err)
+            } else {
+                user.friends.push(req.session.userId);
+                user.save(function(err, results){
+                    if(err){
+                        res.json(err)
+                    } else {
+                        console.log('friend logged in requested user')
+                        res.sendStatus(200);
+                    }
+                })
+            }
+        })
+    },
+
+    removeFriend: function(req, res){
+        User.findOne({_id: req.session.userId}, function(err, user){
+            if(err){
+                res.json(err)
+            }else {
+                user.friends.remove(req.params.id);
+                user.save(function(err, results){
+                    if(err){
+                        res.json(err)
+                    } else {
+                        console.log('friend removed in current user')
+                        // res.sendStatus(200);
+                    }
+                })
+            }
+        });
+        User.findOne({_id: req.params.id}, function(err, user){
+            if(err){
+                res.json(err)
+            } else {
+                user.friends.remove(req.session.userId);
+                user.save(function(err, results){
+                    if(err){
+                        res.json(err)
+                    } else {
+                        console.log('friend removed in requested user')
+                        res.sendStatus(200);
                     }
                 })
             }

@@ -3,10 +3,17 @@
 		<img class="logo" src="../assets/images/Mini_Logo.png" alt="Gopher Escape">
 	</div>
 	<div class="eight columns">
-		<ul class="nav">
-			<li><a class="buttonPlain" href="#/home" >Home</a></li>
-			<li><a class="buttonPlain" href="#/profile" >Profile</a></li>
-		</ul>
+		<div class="nav">
+			<div class="navGroup">
+				<a class="buttonPlain" href="#!/home" >Home</a>
+			</div>
+			<div class="navGroup">
+				<a class="buttonPlain" href="#!/profile" >Profile</a>
+			</div>
+			<div class="navGroup">
+				<a class="buttonSuccess" href="#!/game/{{user.level}}">Lets Play</a>
+			</div>
+		</div >
 	</div>
 	<div class="two columns">
 		<a class="buttonFail" ng-click="logOut()" >Logout</a>

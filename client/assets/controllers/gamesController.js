@@ -168,6 +168,7 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
     levels();
 
 	$scope.replay = function(){
+		thisLevel($routeParams.id, assign);
 		window.location.reload();
 		
 	};

@@ -12,8 +12,6 @@ app.controller('usersController', ['$scope','userFactory', '$routeParams','$loca
         });
     };
 
-    show();
-
     var showUsers = function(){
         userFactory.showUsers(function(returnedData){
             console.log(returnedData.data);
@@ -36,13 +34,24 @@ app.controller('usersController', ['$scope','userFactory', '$routeParams','$loca
         });
     };
 
-    $scope.getRequests = function(){
+    var getRequests = function(){
         userFactory.showRequests(function(returnedData){
-            console.log(returnedData.data);
-            $scope.requests = returnedData.data;
-            console.log("friends shown");
+            console.log('my requests below');
+            console.log(returnedData.data[0]);
+            $scope.req = returnedData.data[0];
         });
     };
+
+    var getFriends = function(){
+        userFactory.showFriends(function(returnedData){
+            console.log('my friends below');
+            console.log(returnedData.data[0]);
+            $scope.friends = returnedData.data[0];
+        });
+    };
+
+    getFriends();
+    getRequests();
 
     $scope.friend = function(friendID){
         userFactory.sendRequest(friendID, function(data) {
@@ -54,17 +63,39 @@ app.controller('usersController', ['$scope','userFactory', '$routeParams','$loca
         });
     };
 
+    $scope.addFriend = function(friendID){
+        userFactory.confirmRequest(friendID, function(data) {
+            if(data.hasOwnProperty('errors')){
+                $scope.errors = data.errors;
+            } else {
+                $route.reload();
+            }
+        });
+    };
+
+    $scope.removeFriend = function(friendID){
+        userFactory.deleteFriend(friendID, function(data) {
+            if(data.hasOwnProperty('errors')){
+                $scope.errors = data.errors;
+            } else {
+                $route.reload();
+            }
+        });
+    };
+
     var levels = function(){
         userFactory.lvlLength(function(returnedData){
             $scope.length = returnedData.data;
         });
-    }
+    };
+
     levels();
 
     $scope.logOut = function(){
         userFactory.logout();
         $location.url('/');
-    }
+    };
 
+    show();
 
 }]);

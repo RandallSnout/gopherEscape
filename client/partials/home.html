@@ -3,10 +3,17 @@
 		<img class="logo" src="../assets/images/Mini_Logo.png" alt="Gopher Escape">
 	</div>
 	<div class="eight columns">
-		<ul class="nav">
-			<li><a class="buttonPlain" href="#!/home" >Home</a></li>
-			<li><a class="buttonPlain" href="#!/profile" >Profile</a></li>
-		</ul>
+		<div class="nav">
+			<div class="navGroup">
+				<a class="buttonPlain" href="#!/home" >Home</a>
+			</div>
+			<div class="navGroup">
+				<a class="buttonPlain" href="#!/profile" >Profile</a>
+			</div>
+			<div class="navGroup">
+				<a class="buttonSuccess" href="#!/game/{{user.level}}">Lets Play</a>
+			</div>
+		</div >
 	</div>
 	<div class="two columns">
 		<a class="buttonFail" ng-click="logOut()" >Logout</a>
@@ -16,21 +23,19 @@
 	<div class="seven columns">
 		<h1>Hello {{user.name}}</h1>
 		<h4>Overall Score:{{user.points}}</h4>
-		<div ng-if="length.max > user.level">
-			<a class="buttonSuccess" href="#/game/{{user.level}}">Lets Play</a>
-		</div>
 		<div ng-hide="length.max > user.level">
 			<h3>More Levels Coming Soon!</h3>
 		</div>
 	</div>
 	<div class="five columns">
-		<a class="buttonSuccess" href="#/find">Find Friends</a>
+		<a class="buttonSuccess" href="#!/find">Find Friends</a>
 		<div class="friendsList">
 			<h3>Friend Here:</h3>
+			<div class="friendsListItems" ng-repeat="friend in friends.friends"><p>{{friend.gamer_name}} - </p><a ng-click="removeFriend(friend._id)" class="buttonFail">Delete</a></div>
 		</div>
 		<div class="friendsList">
 			<h3>Friend Requests:</h3>
-			<p ng-repeat="request in requests">{{request.name}}: <button class="buttonSuccess">Accept</button></p>
+			<div class="friendsListItems" ng-repeat="request in req.requests"><p>{{request.gamer_name}} - </p><a ng-click="addFriend(request._id)" class="buttonSuccess">Accept</a></div>
 		</div>
 	</div>
 </div>

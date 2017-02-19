@@ -9,7 +9,7 @@
 	position: relative;
 	color:white;
 	text-decoration: none;
-	transition: 500ms;
+	transition: 300ms;
 }
 .buttonPlain:before {
 	content:'';
@@ -22,7 +22,7 @@
 	-ms-transform: skew(45deg,0deg); /* IE 9 */
 	-webkit-transform: skew(45deg,0deg); /* Safari */
 	transform: skew(45deg,0deg);
-	transition: 500ms;
+	transition: 300ms;
 }
 .buttonPlain:after{
 	content:'';
@@ -36,10 +36,10 @@
 	left:100%;
 	top:3px;
 	background-color: blue;
-	transition: 500ms;
+	transition: 300ms;
 }
 .buttonPlain:hover {
-	margin:8px 0px 0px 8px;
+	margin:8px 15px 0px 10px;
 	cursor: pointer;
 	position: relative;
 }

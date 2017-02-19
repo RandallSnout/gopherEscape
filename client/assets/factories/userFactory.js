@@ -67,6 +67,25 @@ app.factory('userFactory', ['$http', function($http) {
                 }
             });
         };
+        this.confirmRequest = function(friendID){
+            $http.put('/confirmFriend/'+friendID).then(function(returned_data){
+                console.log(returned_data.data);
+                if (typeof(callback) == 'function'){
+                    friend = returned_data.data;
+                    callback(friend);
+                }
+            });
+        };
+
+        this.deleteFriend = function(friendID){
+            $http.delete('/removeFriend/'+friendID).then(function(returned_data){
+                console.log(returned_data.data);
+                if (typeof(callback) == 'function'){
+                    friend = returned_data.data;
+                    callback(friend);
+                }
+            });
+        };
 
         this.showFriends = function(callback){
             $http.get('/allFriends').then(function(returned_data){

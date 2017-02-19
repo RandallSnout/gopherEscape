@@ -161,7 +161,7 @@ p {
 a {
   color: #1EAEDB; }
 a:hover {
-  color: #0FA0CE; }
+  color: white; }
 
 
 /* Buttons
@@ -366,7 +366,6 @@ form {
   float: right; }
 .u-pull-left {
   float: left; }
-
 
 /* Misc
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

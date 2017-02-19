@@ -76,8 +76,10 @@ textarea {
 .logo {
     margin-top:10px;
 }
-
-.nav li {
+.nav {
+    margin:10px 0px 0px 0px;
+}
+.navGroup {
     display:inline;
     list-style: none;
 }
@@ -158,10 +160,28 @@ textarea {
 .friendsList {
     border:2px solid white;
     border-radius:10px;
-    height:100px;
+    min-height:100px;
     margin:10px 0px;
+    padding:10px;
 }
 
+.friendsListItems {
+    height:60px;
+    width:100%;
+    border-bottom: 1px solid white;
+    clear: both;
+}
+    .friendsListItems p {
+        line-height: 60px;
+        display: inline-block;
+        vertical-align: top;
+        font-size: 20px;
+    }
+    .friendsListItems a {
+        float: right;
+        display: inline-block;
+        vertical-align: top;
+    }
 /*-------------------------------------- Home Screen Style -------------------------*/
 
 .usersList {

@@ -23,5 +23,7 @@ module.exports = function(app){
     app.get('/usersLevel/:id', levels.getLevel);
     app.put('/users/:id', users.update);
     app.put('/friend/:id', users.addFriend);
+    app.put('/confirmFriend/:id', users.confirmFriend);
+    app.delete('/removeFriend/:id', users.removeFriend)
     app.delete('/sessions/logout', sessions.logout);
 };
