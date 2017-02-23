@@ -22,6 +22,14 @@ module.exports = {
         })
     },
 
+    findFriend: function(req,res){
+        //your code here
+        User.findOne({_id: req.params.id}, function(err, result){
+            console.log(result);
+            res.json(result);
+        })
+    },
+
     showFriends: function(req,res){
         //your code here
         User.find({_id: req.session.userId }, {friends:1}).populate('friends').exec(function(err, result){
@@ -116,6 +124,24 @@ module.exports = {
                         res.json(err)
                     } else {
                         console.log('friend logged in requested user')
+                        res.sendStatus(200);
+                    }
+                })
+            }
+        })
+    },
+
+    denyFriend: function(req, res){
+        User.findOne({_id: req.session.userId}, function(err, user){
+            if(err){
+                res.json(err)
+            } else {
+                user.requests.remove(req.params.id);
+                user.save(function(err, results){
+                    if(err){
+                        res.json(err)
+                    } else {
+                        console.log('friend removed in requested user')
                         res.sendStatus(200);
                     }
                 })

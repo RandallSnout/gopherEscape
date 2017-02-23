@@ -69,7 +69,74 @@
     position: absolute;
 }
 
+/* Profile Page Gophers */
+
+#GopherLarge {
+    background:url('../images/brownGopherLarge.gif') center center no-repeat;
+    background-size: contain;
+    width:160px;
+    height:160px;
+    position: absolute;
+}
+#brownGopherLarge {
+    background:url('../images/brownGopherLarge.gif') center center no-repeat;
+    background-size: contain;
+    width:160px;
+    height:160px;
+    position: absolute;
+}
+#redGopherLarge {
+    background:url('../images/redGopherLarge.gif') center center no-repeat;
+    background-size: contain;
+    width:160px;
+    height:160px;
+    position: absolute;
+}
+#greenGopherLarge {
+    background:url('../images/greenGopherLarge.gif') center center no-repeat;
+    background-size: contain;
+    width:160px;
+    height:160px;
+    position: absolute;
+}
+#blueGopherLarge {
+    background:url('../images/blueGopherLarge.gif') center center no-repeat;
+    background-size: contain;
+    width:160px;
+    height:160px;
+    position: absolute;
+}
+#greyGopherLarge {
+    background:url('../images/greyGopherLarge.gif') center center no-repeat;
+    background-size: contain;
+    width:160px;
+    height:160px;
+    position: absolute;
+}
+#orangeGopherLarge {
+    background:url('../images/orangeGopherLarge.gif') center center no-repeat;
+    background-size: contain;
+    width:160px;
+    height:160px;
+    position: absolute;
+}
+#pinkGopherLarge {
+    background:url('../images/pinkGopherLarge.gif') center center no-repeat;
+    background-size: contain;
+    width:160px;
+    height:160px;
+    position: absolute;
+}
+#purpleGopherLarge {
+    background:url('../images/purpleGopherLarge.gif') center center no-repeat;
+    background-size: contain;
+    width:160px;
+    height:160px;
+    position: absolute;
+}
+
 /* Modal Base CSS */
+
 .scotch-overlay
 {
     position: fixed;

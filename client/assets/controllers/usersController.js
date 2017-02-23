@@ -71,6 +71,20 @@ app.controller('usersController', ['$scope','userFactory', '$routeParams','$loca
                 $route.reload();
             }
         });
+        getFriends();
+        getRequests();
+    };
+
+    $scope.denyFriend = function(friendID){
+        userFactory.denyRequest(friendID, function(data) {
+            if(data.hasOwnProperty('errors')){
+                $scope.errors = data.errors;
+            } else {
+                $route.reload();
+            }
+        });
+        getFriends();
+        getRequests();
     };
 
     $scope.removeFriend = function(friendID){
@@ -81,6 +95,7 @@ app.controller('usersController', ['$scope','userFactory', '$routeParams','$loca
                 $route.reload();
             }
         });
+        getFriends();
     };
 
     var levels = function(){
@@ -97,5 +112,26 @@ app.controller('usersController', ['$scope','userFactory', '$routeParams','$loca
     };
 
     show();
+
+    var getMessages = function(){
+        userFactory.getMessages(function(data){
+          $scope.messages = data;
+        })
+      }
+    getMessages();
+
+    $scope.addmessage = function(message, forId){
+        console.log('my message');
+        console.log(message);
+        userFactory.addmessage(message, forId, function(data) {
+          if(data.hasOwnProperty('errors')){
+            $scope.messageErrors = data.errors;
+            console.log(data.errors);
+          } else {
+            getMessages();
+            $scope.message.message = '';
+          }
+        })
+      };
 
 }]);

@@ -1,3 +1,4 @@
+
 <div class="row">
 	<div class="two columns">
 		<img class="logo" src="../assets/images/Mini_Logo.png" alt="Gopher Escape">
@@ -21,16 +22,11 @@
 </div>
 <div class="row">
 	<div class="seven columns">
-		<h1>Hello {{user.name}}</h1>
-		<h4>Overall Score:{{user.points}}</h4>
-		<div ng-hide="length.max+1 > user.level">
-			<h3>More Levels Coming Soon!</h3>
-		</div>
 		<h1>MESSAGE BOARD</h1>
 		<form class="messageBox" ng-model="message">
 			<label>Messages:</label>
 			<textarea type='text' ng-model='message.message' ></textarea> 
-			<a class="buttonSuccess" ng-click='addmessage(message, user._id)'>Post</a>
+			<a class="buttonSuccess" ng-click='addmessage(message, friend._id)'>Post</a>
 		</form>
 		<div class="messBoard">
 			<div ng-repeat="x in messages | orderBy: 'created_at':true ">
@@ -39,14 +35,10 @@
 		</div>
 	</div>
 	<div class="five columns">
-		<a class="buttonSuccess" href="#!/find">Find Friends</a>
-		<div class="friendsList">
-			<h3>Friend Here:</h3>
-			<div class="friendsListItems" ng-repeat="friend in friends.friends"><p><a href="#!/friend/{{friend._id}}">{{friend.gamer_name}}</a> </p><a ng-click="removeFriend(friend._id)" class="buttonFail">Delete</a></div>
-		</div>
-		<div class="friendsList">
-			<h3>Friend Requests:</h3>
-			<div class="friendsListItems" ng-repeat="request in req.requests"><p>{{request.gamer_name}} - </p><a ng-click="denyFriend(request._id)" class="buttonFail">Deny</a> <a ng-click="addFriend(request._id)" class="buttonSuccess">Accept</a></div>
-		</div>
+		<h1>{{friend.name}}</h1>
+		<h4>Overall Score: {{friend.points}}</h4>
+		<h4>Level: {{friend.level}}</h4>
+		<h4>Gamer Name: {{friend.gamer_name}}</h4>
+		<h4>Gopher Color: {{friend.gopher}}</h4>
 	</div>
 </div>

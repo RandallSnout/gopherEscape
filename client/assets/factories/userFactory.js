@@ -77,6 +77,16 @@ app.factory('userFactory', ['$http', function($http) {
             });
         };
 
+        this.denyRequest = function(friendID){
+            $http.delete('/denyFriend/'+friendID).then(function(returned_data){
+                console.log(returned_data.data);
+                if (typeof(callback) == 'function'){
+                    friend = returned_data.data;
+                    callback(friend);
+                }
+            });
+        };
+
         this.deleteFriend = function(friendID){
             $http.delete('/removeFriend/'+friendID).then(function(returned_data){
                 console.log(returned_data.data);
@@ -100,23 +110,59 @@ app.factory('userFactory', ['$http', function($http) {
                 callback(requests);
             });
         };
+
         this.getLevel = function(lvlID, callback){
             $http.get('/usersLevel/'+lvlID).then(function(returned_data){
                 console.log('Factory Level ')
                 console.log(returned_data.data);
-                callback(returned_data.data);
+                if(returned_data.error){
+                    console.log('error getting level');
+                }else{
+                    callback(returned_data);  
+                }
             });
         };
+
         this.addPoints = function(score, callback){
             $http.put('/usersScore/'+score).then(function(returned_data){
                 callback(returned_data.data);
             });
         };
+        
         this.lvlLength = function(callback){
             $http.get('/levelLength').then(function(returned_data){
                 callback(returned_data);
             });
-        }
+        };
+
+        this.addmessage = function(message, forId, callback){
+          $http.post('/addmessage/'+forId, message).then(function(returned_data){
+            // users[returned_data.data.user_id].message += data.message;
+            callback(returned_data.data);
+            console.log(returned_data.data);
+          })
+        };
+
+        this.getMessages = function(callback){
+          $http.get('/messages').then(function(returned_data){
+            callback(returned_data.data);
+          })
+        };
+
+        this.friendMessages = function(friendId, callback){
+          $http.get('/frndMessages/'+friendId).then(function(returned_data){
+            callback(returned_data);
+          })
+        };
+
+        this.retrieveFriend = function(frndId, callback){
+          $http.get('/friendInfo/'+frndId).then(function(returned_data){
+            callback(returned_data);
+            console.log('my friend is');
+            console.log(returned_data)
+          })
+        };
+
 
     }
     // console.log(new UserFactory());

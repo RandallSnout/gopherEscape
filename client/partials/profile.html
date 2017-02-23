@@ -10,7 +10,7 @@
 			<div class="navGroup">
 				<a class="buttonPlain" href="#!/profile" >Profile</a>
 			</div>
-			<div class="navGroup">
+			<div class="navGroup" ng-hide="length.max < user.level">
 				<a class="buttonSuccess" href="#!/game/{{user.level}}">Lets Play</a>
 			</div>
 		</div >
@@ -28,7 +28,7 @@
 		<h4>Current Level: <span ng-bind="user.level"></span></h4>
 		<h4>Gopher Name: <span ng-bind="user.gamer_name"></span></h4>
 		<h4>Gopher:</h4>
-		<div id="{{user.gopher}}Gopher" class="gopherHolder"></div>
+		<div id="{{user.gopher}}GopherLarge" class="gopherHolder"></div>
 	</div>
 	<div class="one-half column">
 		<h2>Update Profile:</h2>

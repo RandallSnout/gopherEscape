@@ -11,6 +11,7 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 
     getUser();
 
+
     $scope.logOut = function(){
         userFactory.logout();
         $location.url('/');
@@ -18,9 +19,9 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 
 	var thisLevel = function(levelId, callback){
 		userFactory.getLevel(levelId, function(returnedData){
-            $scope.level = returnedData;
+            $scope.level = returnedData.data;
             console.log($scope.level+' controller level');
-            callback();
+	        callback();
         });
 	};
 
@@ -105,14 +106,9 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 		locatePacman();
 		pacman = {x:$scope.x, y:$scope.y};
 		displayPacman();
-		// console.log('This is the world variable:')
-		// console.log(world);
-		// console.log('This is the pacman variable:')
-		// console.log(pacman);
 		movePoints();
-	};
 
-	thisLevel($routeParams.id, assign);
+	};
 
 
 	document.onkeydown = function(e){
@@ -122,17 +118,17 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 			document.getElementById(gopher+'Gopher').style.background = "url('assets/images/"+gopher+"Left.gif')";
 			movePoints();
 		}
-		else if (e.keyCode==39 && world[pacman.y][pacman.x+1] !=2 && world[pacman.y][pacman.x-1] !=4) {
+		else if (e.keyCode==39 && world[pacman.y][pacman.x+1] !=2 && world[pacman.y][pacman.x+1] !=4) {
 			pacman.x++;
 			document.getElementById(gopher+'Gopher').style.background = "url('assets/images/"+gopher+"Right.gif')";
 			movePoints();
 		}
-		else if (e.keyCode==38 && world[pacman.y-1][pacman.x] !=2) {
+		else if (e.keyCode==38 && world[pacman.y-1][pacman.x] !=2 && world[pacman.y-1][pacman.x] !=4) {
 			pacman.y--;
 			document.getElementById(gopher+'Gopher').style.background = "url('assets/images/"+gopher+"Backward.gif')";
 			movePoints();
 		}
-		else if (e.keyCode==40 && world[pacman.y+1][pacman.x] !=2) {
+		else if (e.keyCode==40 && world[pacman.y+1][pacman.x] !=2 && world[pacman.y+1][pacman.x] !=4) {
 			pacman.y++;
 			document.getElementById(gopher+'Gopher').style.background = "url('assets/images/"+gopher+"Forward.gif')";
 			movePoints();
@@ -156,7 +152,10 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 		}
 		$scope.score = points;
 		displayWorld();
-		$scope.$apply();
+		if(!$scope.$$phase) {
+  			$scope.$apply();
+		}
+		// $scope.$apply();
 	};
 
 	var levels = function(){
@@ -188,6 +187,8 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 		})
 		// window.location.reload();
 	};
+
+	thisLevel($routeParams.id, assign);
 
 	//--------------------------------------- Modal Function -------------------------//
 

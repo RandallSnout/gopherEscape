@@ -17,7 +17,7 @@ module.exports = {
             var user = new User(req.body);
             user.points = 0;
             user.level = 1;
-            user.gopher = 'brownGopher';
+            user.gopher = 'brown';
             user.status = 'online';
             user.password = bcrypt.hashSync(password, bcrypt.genSaltSync(8));
             user.save(function(err,user){

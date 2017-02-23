@@ -36,6 +36,10 @@ app.config(function ($routeProvider, $httpProvider) {
             templateUrl: 'partials/gameBoard.html',
             controller:'gamesController'
         })
+        .when('/friend/:id', {
+            templateUrl: 'partials/FriendProfile.html',
+            controller:'friendsController'
+        })
         .otherwise({
             redirectTo: '/login'
         });
