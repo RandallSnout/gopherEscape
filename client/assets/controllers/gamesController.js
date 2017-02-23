@@ -21,7 +21,9 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 		userFactory.getLevel(levelId, function(returnedData){
             $scope.level = returnedData.data;
             console.log($scope.level+' controller level');
-	        callback();
+            $timeout(function() {
+	        	callback();
+			}, 100);
         });
 	};
 
