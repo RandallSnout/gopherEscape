@@ -1,0 +1,91 @@
+<div class="menu">
+		<div class="logoContainer">
+			<img class="logo" src="../assets/images/Mini_Logo.png" alt="Gopher Escape Logo">
+		</div>
+		<div class="login">
+			<a class="buttonPlain" ng-click="login()">Login/Register</a>
+		</div>
+	</div>
+	<div class="container">
+		<div class="welcomeBanner">
+			<img src="../assets/images/banner.jpg" alt="Welcome to Gopher Escape">
+		</div>
+	</div>
+	<div class="white">
+	<div class="container">
+		<div class="row">
+			<div class="six columns"><p></p></div>
+			<div class="six columns">
+				<h2 class="onWhite">About Gopher Escape</h2>
+				<p>Gopher Escape is a hidden pathway game. Each level will get more and more complicated and it's up to you to find the way out. The pathway will will show for a second then be barried under dirt. Remember the path to guide you gopher to safety. The exit is mard with the gopher hole mound in the grass.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="six columns">
+				<h2 class="onWhite">More Than a Game</h2>
+				<p>Gopher Escape is a place to connect with friends set challanges and battle head to head.</p>
+				<ul>
+					<li>Connect to Friends</li>
+					<li>Choose your own Gopher</li>
+					<li>Level up and store overall score</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="container">
+		<h1 class="testBanner">Give Gopher Escape a test dig!</h1>
+		<div class="gameHolder row">
+			<div class="four columns">
+				<h2>Rules:</h2>
+				<ul>
+					<li>Direct Gopher with keyboard.</li>
+					<li>Path will show for a second.</li>
+					<li>Dead ends have landmines.</li> 
+					<li>Landmines Deduct Points.</li>
+				</ul>
+			</div>
+			<div class="five columns">
+				<div id="sampleplayGame">
+					<a class="buttonPlain" ng-click="sampleGame()">Click To Play!</a>
+				</div>
+				<div id="samplegameBlocker">
+					<div class="gary">
+						<div id="samplescore" ng-bind="sampleScore"></div>
+					</div>
+					<div class="samplegameBox">
+						<div class="sampleBoard">
+							<div id="sampleWorld" ng-bind-html="showSample()"></div>
+							<div id="pacman"></div>	
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="three columns keys">
+				<img src="../assets/images/keyboardKeys.png" alt="keyboard Keys">
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="container">
+			<div class="eight columns">
+				<p>Gopher Escape</p>
+			</div>
+			<div class="four columns">
+				<ul>
+					<li class="two columns"><a href="#"><img src="../assets/images/facebook.png"></a></li>
+					<li class="two columns"><a href="#"><img src="../assets/images/twitter.png"></a></li>
+					<li class="two columns"><a href="#"><img src="../assets/images/like.png"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="myModal" class="modal">
+
+	  <!-- Modal content -->
+		<div class="modal-content">
+	    	<span class="close">&times;</span>
+	    	<h1>More Levels coming soon!!</h1>
+		</div>
+	</div>
+	

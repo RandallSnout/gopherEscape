@@ -16,6 +16,10 @@ app.factory('loginInterceptor',['$q','$location',function($q, $location){
 app.config(function ($routeProvider, $httpProvider) {
     $httpProvider.interceptors.push('loginInterceptor');
     $routeProvider
+        .when('/splash', {
+            templateUrl: 'partials/splash.html',
+            controller:'splashController'
+        })
         .when('/login', {
             templateUrl: 'partials/login.html',
             controller:'sessionsController'
@@ -41,6 +45,6 @@ app.config(function ($routeProvider, $httpProvider) {
             controller:'friendsController'
         })
         .otherwise({
-            redirectTo: '/login'
+            redirectTo: '/splash'
         });
 });

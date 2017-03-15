@@ -1,5 +1,6 @@
 app.controller('sessionsController', ['$scope','userFactory', '$location', function($scope, userFactory, $location) {
 
+
     $scope.login = function(user){
         console.log(user);
             userFactory.login(user, function (returnData) {

@@ -31,7 +31,7 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 	var points = 0;
 
 
-	var locatePacman = function(){
+	var locatePlayer = function(){
 		for(var p=0; p<world.length; p++){ 
 			for(var t=0; t<world[p].length; t++){ 
 				if(world[p][t] == 0){
@@ -47,7 +47,7 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 	$scope.shakeBoard = true;
 
 	// trying something new...
-	var pacman;
+	var player;
 
  	var displayWorld = function(){
  		var output = '';
@@ -94,9 +94,9 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 		};
 
  	};
- 	 var displayPacman = function(){
-			document.getElementById(gopher+'Gopher').style.top = pacman.y*40+"px";
-			document.getElementById(gopher+'Gopher').style.left = pacman.x*40+"px";
+ 	 var displayPlayer = function(){
+			document.getElementById(gopher+'Gopher').style.top = player.y*40+"px";
+			document.getElementById(gopher+'Gopher').style.left = player.x*40+"px";
 	};
 
  	var assign = function(){
@@ -105,9 +105,9 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 		console.log('Gopher');
 		console.log(gopher+"Gopher");
 		displayWorld();
-		locatePacman();
-		pacman = {x:$scope.x, y:$scope.y};
-		displayPacman();
+		locatePlayer();
+		player = {x:$scope.x, y:$scope.y};
+		displayPlayer();
 		movePoints();
 
 	};
@@ -115,40 +115,40 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 
 	document.onkeydown = function(e){
 		// e.preventDefault();
-		if(e.keyCode == 37 && world[pacman.y][pacman.x-1] !=2 && world[pacman.y][pacman.x-1] !=4){
-			pacman.x--;
+		if(e.keyCode == 37 && world[player.y][player.x-1] !=2 && world[player.y][player.x-1] !=4){
+			player.x--;
 			document.getElementById(gopher+'Gopher').style.background = "url('assets/images/"+gopher+"Left.gif')";
 			movePoints();
 		}
-		else if (e.keyCode==39 && world[pacman.y][pacman.x+1] !=2 && world[pacman.y][pacman.x+1] !=4) {
-			pacman.x++;
+		else if (e.keyCode==39 && world[player.y][player.x+1] !=2 && world[player.y][player.x+1] !=4) {
+			player.x++;
 			document.getElementById(gopher+'Gopher').style.background = "url('assets/images/"+gopher+"Right.gif')";
 			movePoints();
 		}
-		else if (e.keyCode==38 && world[pacman.y-1][pacman.x] !=2 && world[pacman.y-1][pacman.x] !=4) {
-			pacman.y--;
+		else if (e.keyCode==38 && world[player.y-1][player.x] !=2 && world[player.y-1][player.x] !=4) {
+			player.y--;
 			document.getElementById(gopher+'Gopher').style.background = "url('assets/images/"+gopher+"Backward.gif')";
 			movePoints();
 		}
-		else if (e.keyCode==40 && world[pacman.y+1][pacman.x] !=2 && world[pacman.y+1][pacman.x] !=4) {
-			pacman.y++;
+		else if (e.keyCode==40 && world[player.y+1][player.x] !=2 && world[player.y+1][player.x] !=4) {
+			player.y++;
 			document.getElementById(gopher+'Gopher').style.background = "url('assets/images/"+gopher+"Forward.gif')";
 			movePoints();
 		}
-		displayPacman();
+		displayPlayer();
 	};
 
 	movePoints = function(){
-		if(world[pacman.y][pacman.x]==1){
-			world[pacman.y][pacman.x] = 0;
+		if(world[player.y][player.x]==1){
+			world[player.y][player.x] = 0;
 			points+=10;
 		}
-		if(world[pacman.y][pacman.x]==3){
-			world[pacman.y][pacman.x]=0;
+		if(world[player.y][player.x]==3){
+			world[player.y][player.x]=0;
 			points-=20;
 		}
-		if(world[pacman.y][pacman.x]==5){
-			world[pacman.y][pacman.x]=0;
+		if(world[player.y][player.x]==5){
+			world[player.y][player.x]=0;
 			points+=300;
 			modalWin();
 		}
