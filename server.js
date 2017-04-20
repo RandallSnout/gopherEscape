@@ -11,7 +11,7 @@ var sessionConfig = {
     saveUninitialized: true, // Don't save session if there was nothing initialized
     name:'myCookie', // Sets a custom cookie name
     cookie: {
-        secure: false, // This need to be true, but only on HTTPS
+        secure:true, // This need to be true, but only on HTTPS
         httpOnly:false, // Forces cookies to only be used over http
         maxAge: 3600000
     }
