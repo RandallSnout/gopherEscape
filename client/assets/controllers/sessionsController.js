@@ -10,7 +10,7 @@ app.controller('sessionsController', ['$scope','userFactory', '$location', funct
                 } else {
                     $scope.currentUser = returnData;
                     console.log('successful login');
-                    $location.url('/home'); 
+                    $location.url('/dashboard'); 
                 }
             })
     };
