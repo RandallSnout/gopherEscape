@@ -215,7 +215,18 @@ textarea {
   background-color: darkgrey;
   border-radius: .5em;
 }
-
+.messageBoardGroup {
+    margin-bottom: 15px;
+}
+    .messageBoardGroup p{
+        margin-bottom: 0px;
+    }
+    .messageBoardGroup span{
+        color:grey;
+    }
+    .messageBoardMess{
+        margin-left:10px;
+    }
 /*-------------------------------------- Game Board Style --------------------------*/
 
 .gameBanner {

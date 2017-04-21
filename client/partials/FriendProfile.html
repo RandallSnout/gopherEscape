@@ -21,7 +21,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="seven columns">
+	<div class="eight columns">
 		<h1>MESSAGE BOARD</h1>
 		<form class="messageBox" ng-model="message">
 			<label>Messages:</label>
@@ -29,12 +29,13 @@
 			<a class="buttonSuccess" ng-click='addmessage(message, friend._id)'>Post</a>
 		</form>
 		<div class="messBoard">
-			<div ng-repeat="x in messages | orderBy: 'created_at':true ">
-				<p>{{x._user.name}} - {{x.message}} - {{x.createdAt}}</p>
+			<div class="messageBoardGroup" ng-repeat="x in messages | orderBy: 'created_at':true ">
+				<p>{{x._user.name}}:</p> 
+				<p class="messageBoardMess"><span ng-bind="x.createdAt | date:'MMMM dd, yyyy'"></span>: {{x.message}}</p>
 			</div>
 		</div>
 	</div>
-	<div class="five columns">
+	<div class="four columns">
 		<h1>{{friend.name}}</h1>
 		<h4>Overall Score: {{friend.points}}</h4>
 		<h4>Level: {{friend.level}}</h4>

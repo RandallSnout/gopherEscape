@@ -6,9 +6,7 @@ app.controller('friendsController', ['$scope','userFactory', '$routeParams','$lo
 
     var show = function(){
         userFactory.show(function(returnedData){
-            console.log(returnedData.data);
             $scope.user = returnedData.data;
-            console.log($scope.user);
         });
     };
 
@@ -38,19 +36,14 @@ app.controller('friendsController', ['$scope','userFactory', '$routeParams','$lo
     var getFriendMessages = function(messId){
         userFactory.friendMessages(messId, function(data){
           $scope.messages = data.data;
-          console.log('friends messages');
-          console.log($scope.messages);
         })
       }
     getFriendMessages($routeParams.id);
 
     $scope.addmessage = function(message, forId){
-        console.log('my message');
-        console.log(message);
         userFactory.addmessage(message, forId, function(data) {
           if(data.hasOwnProperty('errors')){
             $scope.messageErrors = data.errors;
-            console.log(data.errors);
           } else {
             getFriendMessages($routeParams.id);
             $scope.message.message = '';

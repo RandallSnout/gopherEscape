@@ -6,26 +6,20 @@ app.controller('usersController', ['$scope','userFactory', '$routeParams','$loca
 
     var show = function(){
         userFactory.show(function(returnedData){
-            console.log(returnedData.data);
             $scope.user = returnedData.data;
-            console.log($scope.user);
         });
     };
 
     var showUsers = function(){
         userFactory.showUsers(function(returnedData){
-            console.log(returnedData.data);
             $scope.users = returnedData.data;
-            console.log("users shown");
         });
     };
 
     showUsers();
 
     $scope.updateUser = function(id, post){
-        console.log(post);
         userFactory.update(id, post, function(returnData) {
-            console.log(returnData);
             if(returnData.hasOwnProperty('errors')){
                 $scope.errors = returnData.errors;
             } else {
@@ -36,16 +30,12 @@ app.controller('usersController', ['$scope','userFactory', '$routeParams','$loca
 
     var getRequests = function(){
         userFactory.showRequests(function(returnedData){
-            console.log('my requests below');
-            console.log(returnedData.data[0]);
             $scope.req = returnedData.data[0];
         });
     };
 
     var getFriends = function(){
         userFactory.showFriends(function(returnedData){
-            console.log('my friends below');
-            console.log(returnedData.data[0]);
             $scope.friends = returnedData.data[0];
         });
     };
@@ -121,12 +111,9 @@ app.controller('usersController', ['$scope','userFactory', '$routeParams','$loca
     getMessages();
 
     $scope.addmessage = function(message, forId){
-        console.log('my message');
-        console.log(message);
         userFactory.addmessage(message, forId, function(data) {
           if(data.hasOwnProperty('errors')){
             $scope.messageErrors = data.errors;
-            console.log(data.errors);
           } else {
             getMessages();
             $scope.message.message = '';

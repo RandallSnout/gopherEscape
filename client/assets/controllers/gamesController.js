@@ -20,7 +20,6 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 	var thisLevel = function(levelId, callback){
 		userFactory.getLevel(levelId, function(returnedData){
             $scope.level = returnedData.data;
-            console.log($scope.level+' controller level');
             $timeout(function() {
 	        	callback();
 			}, 100);
@@ -102,8 +101,6 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
  	var assign = function(){
 		world = $scope.level;
 		gopher = $scope.user.gopher;
-		console.log('Gopher');
-		console.log(gopher+"Gopher");
 		displayWorld();
 		locatePlayer();
 		player = {x:$scope.x, y:$scope.y};
@@ -182,8 +179,6 @@ app.controller('gamesController', ['$scope','userFactory','$sce', '$routeParams'
 	$scope.next = function(score){
 		console.log('score: '+score);
 		userFactory.addPoints(score, function(returnData){
-			console.log('users level is:');
-			console.log(returnData);
 			var newLevel = returnData;
 			$location.url('/game/'+newLevel);
 		})
