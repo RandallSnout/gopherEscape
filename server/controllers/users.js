@@ -8,6 +8,7 @@ module.exports = {
 
     show: function(req,res){
         //your code here
+        console.log('Session Id is: '+req.session.userId);
         User.findOne({_id: req.session.userId}, function(err, result){
             console.log(result);
             res.json(result);

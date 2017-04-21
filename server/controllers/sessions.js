@@ -44,6 +44,7 @@ module.exports = {
                     if (bcrypt.compareSync(req.body.password, user.password)) {
                         console.log('User password matches');
                         req.session.userId = user._id;
+                        console.log('User id is:'+ user._id);
                         res.status(201).json(user);
                         // res.json(user)
                     } else {
