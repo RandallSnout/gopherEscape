@@ -4,7 +4,6 @@ console.log('users controller');
 // Build out the methods in the friendsControllers below
 var mongoose = require('mongoose')
 var User = mongoose.model('User');
-var friends = require("mongoose-friends")
 module.exports = {
 
     show: function(req,res){
